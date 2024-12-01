@@ -1,0 +1,82 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002301a34a450 .scope module, "somador4bits_tbR" "somador4bits_tbR" 2 15;
+ .timescale -9 -12;
+v000002301a34dea0_0 .var "A", 3 0;
+v000002301a346bc0_0 .var "B", 3 0;
+v000002301a346c60_0 .net "Y", 4 0, L_000002301a346f80;  1 drivers
+v000002301a346d00_0 .var/i "seed", 31 0;
+v000002301a346da0_0 .var/i "somaObjetivo", 31 0;
+S_000002301a34a5e0 .scope module, "somador" "somador4bits" 2 24, 3 16 0, S_000002301a34a450;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "num1";
+    .port_info 1 /INPUT 4 "num2";
+    .port_info 2 /OUTPUT 5 "resultado";
+v000002301a34bf30_0 .net *"_ivl_0", 4 0, L_000002301a346e40;  1 drivers
+L_000002301a3db858 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000002301a34dae0_0 .net *"_ivl_3", 0 0, L_000002301a3db858;  1 drivers
+v000002301a34db80_0 .net *"_ivl_4", 4 0, L_000002301a346ee0;  1 drivers
+L_000002301a3db8a0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000002301a34dc20_0 .net *"_ivl_7", 0 0, L_000002301a3db8a0;  1 drivers
+v000002301a34dcc0_0 .net "num1", 3 0, v000002301a34dea0_0;  1 drivers
+v000002301a34dd60_0 .net "num2", 3 0, v000002301a346bc0_0;  1 drivers
+v000002301a34de00_0 .net "resultado", 4 0, L_000002301a346f80;  alias, 1 drivers
+L_000002301a346e40 .concat [ 4 1 0 0], v000002301a34dea0_0, L_000002301a3db858;
+L_000002301a346ee0 .concat [ 4 1 0 0], v000002301a346bc0_0, L_000002301a3db8a0;
+L_000002301a346f80 .arith/sum 5, L_000002301a346e40, L_000002301a346ee0;
+    .scope S_000002301a34a450;
+T_0 ;
+    %vpi_call 2 31 "$dumpfile", "waveform_somador4bitR.vcd" {0 0 0};
+    %vpi_call 2 32 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002301a34a450 {0 0 0};
+    %pushi/vec4 12430, 0, 32;
+    %store/vec4 v000002301a346d00_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002301a346da0_0, 0, 32;
+    %vpi_call 2 37 "$monitor", "Time=%0d: a=%b b=%b y=%b somaObjetivo=%b", $time, v000002301a34dea0_0, v000002301a346bc0_0, v000002301a346c60_0, v000002301a346da0_0 {0 0 0};
+    %vpi_call 2 42 "$display", "Testbench comecou!" {0 0 0};
+    %pushi/vec4 15, 0, 32;
+T_0.0 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_0.1, 5;
+    %jmp/1 T_0.1, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %vpi_func 2 47 "$urandom" 32, v000002301a346d00_0 {0 0 0};
+    %pad/u 4;
+    %store/vec4 v000002301a34dea0_0, 0, 4;
+    %vpi_func 2 48 "$urandom" 32, v000002301a346d00_0 {0 0 0};
+    %pad/u 4;
+    %store/vec4 v000002301a346bc0_0, 0, 4;
+    %load/vec4 v000002301a34dea0_0;
+    %pad/u 32;
+    %load/vec4 v000002301a346bc0_0;
+    %pad/u 32;
+    %add;
+    %store/vec4 v000002301a346da0_0, 0, 32;
+    %delay 10000, 0;
+    %load/vec4 v000002301a346da0_0;
+    %load/vec4 v000002301a346c60_0;
+    %pad/u 32;
+    %cmp/ne;
+    %jmp/0xz  T_0.2, 4;
+    %vpi_call 2 55 "$display", "Erro: somaObjetivo (%b) != Y (%b)", &PV<v000002301a346da0_0, 0, 5>, v000002301a346c60_0 {0 0 0};
+T_0.2 ;
+    %jmp T_0.0;
+T_0.1 ;
+    %pop/vec4 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "somador4bits_tbR.v";
+    "somador4bits.v";
