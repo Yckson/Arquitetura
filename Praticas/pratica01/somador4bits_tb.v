@@ -43,7 +43,7 @@ module somador4bits_tb;
             A = i[3:0];
             for (integer j = 0; j < 16; j = j + 1) begin
                 B = j[3:0];
-                #100; //Gera um atraso de 10 unidades
+                #100; //Gera um atraso de 100 unidades
             end
         end
 
