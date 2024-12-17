@@ -1,0 +1,17 @@
+Arquivo para Linux (compile_and_run.sh)
+
+ -- Passos para executar:
+    
+    Dê permissão de execução ao arquivo:
+        chmod +x executar.sh
+    Execute o script:
+        ./executar.sh
+
+Arquivo para Windows (compile_and_run.bat)
+
+ -- Passos para executar:
+
+    Dê um duplo clique no arquivo para executá-lo no Windows.
+    
+    Esses scripts assumem que o iverilog, vvp, e o gtkwave estão instalados e configurados no PATH do sistema operacional. 
+    Caso contrário, você precisará configurar o PATH ou especificar o caminho completo para os executáveis no script.
