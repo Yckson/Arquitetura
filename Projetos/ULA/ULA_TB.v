@@ -116,12 +116,21 @@ module ULA_TB();
             B = $urandom(seed);
             func = $urandom_range(0, 1);
 
-            saidaEsperada = (func == 3'b0) ? A + B : A - B;
+            saidaEsperada = (func === 3'b0) ? A + B : A - B;
 
             #10;
 
-            $display("%0t | Caso aleatorio A = %0d - B = %0d : Saida esperada = %0d | Saida obtida = %0d | pinV = %0b",
-                  $time, A, B, saidaEsperada, R, pinV);
+            if (func === 3'b0 ) begin
+                $display("%0t | Caso aleatorio A = %0d + B = %0d : Saida esperada = %0d | Saida obtida = %0d | pinV = %0b",
+                          $time, A, B, saidaEsperada, R, pinV);
+            end
+
+            else begin
+                $display("%0t | Caso aleatorio A = %0d - B = %0d : Saida esperada = %0d | Saida obtida = %0d | pinV = %0b",
+                          $time, A, B, saidaEsperada, R, pinV);
+            end
+
+            
             
             if (saidaEsperada != R) begin
                 $display("Erro! ^^^^^^");
