@@ -140,9 +140,14 @@ end:
     #Esse tipo de recursão não exige o armazenamento do estado do processamento após a chamada recursiva.
 
 func_palindromo:
+    subi    $sp,                $sp,    4                                           # Abre espaço na pilha
+    sw      $ra,                0($sp)                                              # Guarda o endereço de retorno na pilha
 
     bgt     $a1,                $a0,    recursivo_palindromo                        # Caso base : $a1 <= $a0. Recursividade: em recursivo_palindromo
     li      $v0,                1                                                   # Se for um palíndromo, a função retorna 1
+
+    lw      $ra,                0($sp)                                              # Recupera o endereço de retorno da função
+    addi    $sp,                $sp,    4                                           # Libera o espaço alocado na pilha
     jr      $ra                                                                     # Encerra a execução da recursividade
 
 recursivo_palindromo:                                                               #>>>Recursividade da função
@@ -151,11 +156,20 @@ recursivo_palindromo:                                                           
     lb      $t2,                0($a1)                                              # Carrega o caractere na posição $a1
     bne     $t1,                $t2,    diferente                                   #Verifica se os caracteres são diferentes. Se não forem...
 
-    addi    $a0,                $a0,    1
-    subi    $a1,                $a1,    1
+    addi    $a0,                $a0,    1                                           # Atualiza o argumento acumulador 1 #2147479548 2147479544
+    subi    $a1,                $a1,    1                                           # Atualiza o argumento acumulador 2
 
-    j       func_palindromo
+    jal     func_palindromo                                                         #  Chamada recursiva da função
+
+    lw      $ra,                0($sp)                                              # Recupera o endereço da chamada anterior da função
+    addi    $sp,                $sp,    4                                           # Libera o espaço na pilha
+
+    jr      $ra                                                                     # Retorna para a chamada anterior
+
 
 diferente:
     li      $v0,                0                                                   # Se não for um palíndromo, a função retorna 0
+
+    addi    $sp,                $sp,    4                                           # Libera o espaço na pilha
+
     jr      $ra                                                                     # Encerra a execução da recursividade
