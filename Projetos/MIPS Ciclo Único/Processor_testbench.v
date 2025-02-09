@@ -22,13 +22,16 @@ module Processor_testbench;
             $dumpvars(1, regBankState[iterator2]);
         end
 
+        for (iterator2 = 0; iterator2 < 256; iterator2 = iterator2 + 1) begin
+            $dumpvars(1, Processor_testbench.uut.RAM.memory[iterator2]);
+        end
         // Initialize clock and reset
         clk = 0;
         reset = 1;
         #10 reset = 0;
 
         // Run the clock for a few cycles
-        repeat (20) begin
+        repeat (200) begin
             clk = ~clk;
             #10;
         end
