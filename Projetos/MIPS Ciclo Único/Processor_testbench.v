@@ -53,7 +53,7 @@ module Processor_testbench;
         clk = 0;
         reset = 1;
 
-        $readmemb("./Assembly/programbin.bin", dut.instMem0.memory, 0, 17);
+        $readmemb("./Assembly/codigo.mem", dut.instMem0.memory, 0, 17);
 
         for (iter3 = 18; iter3 < 256; iter3 = iter3 + 1) begin
             dut.instMem0.memory[iter3] = 32'b0;
