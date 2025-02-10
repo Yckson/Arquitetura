@@ -3,7 +3,7 @@ Este tutorial irá guiá-lo através dos passos necessários para compilar e exe
 ## Pré-requisitos
 
 Certifique-se de ter os seguintes softwares instalados em seu sistema:
-- [Icarus Verilog](http://iverilog.icarus.com/)
+- [Icarus Verilog](https://steveicarus.github.io/iverilog/usage/installation.html)
 - [GTKWave](http://gtkwave.sourceforge.net/)
 
 ## Passos para Compilar e Executar
@@ -13,7 +13,7 @@ Certifique-se de ter os seguintes softwares instalados em seu sistema:
 Primeiro, clone o repositório do projeto para o seu diretório local:
 
 ```sh
-git clone https://github.com/seu-usuario/Arquitetura.git
+git clone https://github.com/Yckson/Arquitetura.git
 cd Arquitetura/Projetos/MIPS\ Ciclo\ Único
 ```
 
