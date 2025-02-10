@@ -19,7 +19,7 @@ module InstructionMemory(
         
         //$display("\nINST MEMO ---\n");
 
-        $readmemb("programbin.bin", memory);
+        //$readmemb("programbin.bin", memory);
         
         //memory[0] = 32'b001000_00000_01001_0000000000000101; // addi $t1, $zero, 5 [0]
         //$display("\n%b", memory[0]);
@@ -45,10 +45,10 @@ module InstructionMemory(
         //memory[7] = 32'b000010_00000000000000000000001000; // j fim (escreve_oito) [28]
         //$display("\n%b", memory[7]);
 
-        for (i = 18; i < 256; i = i + 1) begin
-            memory[i] = 32'b0;
+        //for (i = 18; i < 256; i = i + 1) begin
+        //    memory[i] = 32'b0;
             //$display("\n%b", memory[i]);
-        end
+        //end
 
     end
 

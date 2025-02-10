@@ -1,0 +1,431 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Sun Feb  9 17:46:25 2025
+[*]
+[dumpfile] "/mnt/c/Users/yckso/OneDrive/Documentos/GitHub/Arquitetura/Projetos/MIPS Ciclo Único/Processor_testbench.vcd"
+[dumpfile_mtime] "Sun Feb  9 17:19:28 2025"
+[dumpfile_size] 132037
+[savefile] "/mnt/c/Users/yckso/OneDrive/Documentos/GitHub/Arquitetura/Projetos/MIPS Ciclo Único/GTK WAVE/GTK_STYLE.gtkw"
+[timestart] 0
+[size] 1920 1034
+[pos] -558 -144
+*-18.299999 183000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Processor_testbench.
+[treeopen] Processor_testbench.dut.
+[sst_width] 276
+[signals_width] 512
+[sst_expanded] 1
+[sst_vpaned_height] 641
+@c00200
+-SINAIS PRINCIPAIS
+@200
+-SINAIS PRINCIPAIS
+@28
++{CLK} Processor_testbench.clk
++{RESET} Processor_testbench.reset
+@c00024
++{PROGRAM COUNTER (PC)} Processor_testbench.PC[31:0]
+@28
+(0)Processor_testbench.PC[31:0]
+(1)Processor_testbench.PC[31:0]
+(2)Processor_testbench.PC[31:0]
+(3)Processor_testbench.PC[31:0]
+(4)Processor_testbench.PC[31:0]
+(5)Processor_testbench.PC[31:0]
+(6)Processor_testbench.PC[31:0]
+(7)Processor_testbench.PC[31:0]
+(8)Processor_testbench.PC[31:0]
+(9)Processor_testbench.PC[31:0]
+(10)Processor_testbench.PC[31:0]
+(11)Processor_testbench.PC[31:0]
+(12)Processor_testbench.PC[31:0]
+(13)Processor_testbench.PC[31:0]
+(14)Processor_testbench.PC[31:0]
+(15)Processor_testbench.PC[31:0]
+(16)Processor_testbench.PC[31:0]
+(17)Processor_testbench.PC[31:0]
+(18)Processor_testbench.PC[31:0]
+(19)Processor_testbench.PC[31:0]
+(20)Processor_testbench.PC[31:0]
+(21)Processor_testbench.PC[31:0]
+(22)Processor_testbench.PC[31:0]
+(23)Processor_testbench.PC[31:0]
+(24)Processor_testbench.PC[31:0]
+(25)Processor_testbench.PC[31:0]
+(26)Processor_testbench.PC[31:0]
+(27)Processor_testbench.PC[31:0]
+(28)Processor_testbench.PC[31:0]
+(29)Processor_testbench.PC[31:0]
+(30)Processor_testbench.PC[31:0]
+(31)Processor_testbench.PC[31:0]
+@1401200
+-group_end
+@c00024
++{PROX PC} Processor_testbench.nextPC[31:0]
+@28
+(0)Processor_testbench.nextPC[31:0]
+(1)Processor_testbench.nextPC[31:0]
+(2)Processor_testbench.nextPC[31:0]
+(3)Processor_testbench.nextPC[31:0]
+(4)Processor_testbench.nextPC[31:0]
+(5)Processor_testbench.nextPC[31:0]
+(6)Processor_testbench.nextPC[31:0]
+(7)Processor_testbench.nextPC[31:0]
+(8)Processor_testbench.nextPC[31:0]
+(9)Processor_testbench.nextPC[31:0]
+(10)Processor_testbench.nextPC[31:0]
+(11)Processor_testbench.nextPC[31:0]
+(12)Processor_testbench.nextPC[31:0]
+(13)Processor_testbench.nextPC[31:0]
+(14)Processor_testbench.nextPC[31:0]
+(15)Processor_testbench.nextPC[31:0]
+(16)Processor_testbench.nextPC[31:0]
+(17)Processor_testbench.nextPC[31:0]
+(18)Processor_testbench.nextPC[31:0]
+(19)Processor_testbench.nextPC[31:0]
+(20)Processor_testbench.nextPC[31:0]
+(21)Processor_testbench.nextPC[31:0]
+(22)Processor_testbench.nextPC[31:0]
+(23)Processor_testbench.nextPC[31:0]
+(24)Processor_testbench.nextPC[31:0]
+(25)Processor_testbench.nextPC[31:0]
+(26)Processor_testbench.nextPC[31:0]
+(27)Processor_testbench.nextPC[31:0]
+(28)Processor_testbench.nextPC[31:0]
+(29)Processor_testbench.nextPC[31:0]
+(30)Processor_testbench.nextPC[31:0]
+(31)Processor_testbench.nextPC[31:0]
+@1401200
+-group_end
+@c00028
++{INSTRUÇÃO} Processor_testbench.instruction[31:0]
+@28
+(0)Processor_testbench.instruction[31:0]
+(1)Processor_testbench.instruction[31:0]
+(2)Processor_testbench.instruction[31:0]
+(3)Processor_testbench.instruction[31:0]
+(4)Processor_testbench.instruction[31:0]
+(5)Processor_testbench.instruction[31:0]
+(6)Processor_testbench.instruction[31:0]
+(7)Processor_testbench.instruction[31:0]
+(8)Processor_testbench.instruction[31:0]
+(9)Processor_testbench.instruction[31:0]
+(10)Processor_testbench.instruction[31:0]
+(11)Processor_testbench.instruction[31:0]
+(12)Processor_testbench.instruction[31:0]
+(13)Processor_testbench.instruction[31:0]
+(14)Processor_testbench.instruction[31:0]
+(15)Processor_testbench.instruction[31:0]
+(16)Processor_testbench.instruction[31:0]
+(17)Processor_testbench.instruction[31:0]
+(18)Processor_testbench.instruction[31:0]
+(19)Processor_testbench.instruction[31:0]
+(20)Processor_testbench.instruction[31:0]
+(21)Processor_testbench.instruction[31:0]
+(22)Processor_testbench.instruction[31:0]
+(23)Processor_testbench.instruction[31:0]
+(24)Processor_testbench.instruction[31:0]
+(25)Processor_testbench.instruction[31:0]
+(26)Processor_testbench.instruction[31:0]
+(27)Processor_testbench.instruction[31:0]
+(28)Processor_testbench.instruction[31:0]
+(29)Processor_testbench.instruction[31:0]
+(30)Processor_testbench.instruction[31:0]
+(31)Processor_testbench.instruction[31:0]
+@1401200
+-group_end
+-SINAIS PRINCIPAIS
+@c00200
+-SINAIS DE CONTROLE
+@200
+-SINAIS DE CONTROLE
+@28
+Processor_testbench.regDst
+Processor_testbench.jump
+Processor_testbench.branch
+Processor_testbench.memRead
+Processor_testbench.memToReg
+@c00028
++{ALUOp} Processor_testbench.ALUop[1:0]
+@28
+(0)Processor_testbench.ALUop[1:0]
+(1)Processor_testbench.ALUop[1:0]
+@1401200
+-group_end
+@28
+Processor_testbench.memWrite
+Processor_testbench.ALUSrc
+Processor_testbench.regWrite
+@1401200
+-SINAIS DE CONTROLE
+@c00200
+-BANCO DE REGISTRADORES
+@200
+-REGISTRADORES
+@22
++{$zero} Processor_testbench.Banco_de_Registradores[0].registrador[31:0]
+@c00022
++{$at} Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+@28
+(0)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(1)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(2)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(3)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(4)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(5)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(6)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(7)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(8)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(9)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(10)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(11)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(12)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(13)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(14)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(15)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(16)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(17)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(18)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(19)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(20)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(21)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(22)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(23)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(24)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(25)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(26)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(27)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(28)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(29)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(30)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+(31)Processor_testbench.Banco_de_Registradores[1].registrador[31:0]
+@1401200
+-group_end
+@22
++{$v0} Processor_testbench.Banco_de_Registradores[2].registrador[31:0]
++{$v1} Processor_testbench.Banco_de_Registradores[3].registrador[31:0]
++{$a0} Processor_testbench.Banco_de_Registradores[4].registrador[31:0]
++{$a1} Processor_testbench.Banco_de_Registradores[5].registrador[31:0]
++{$a2} Processor_testbench.Banco_de_Registradores[6].registrador[31:0]
++{$a3} Processor_testbench.Banco_de_Registradores[7].registrador[31:0]
++{$t0} Processor_testbench.Banco_de_Registradores[8].registrador[31:0]
++{$t1} Processor_testbench.Banco_de_Registradores[9].registrador[31:0]
++{$t2} Processor_testbench.Banco_de_Registradores[10].registrador[31:0]
++{$t3} Processor_testbench.Banco_de_Registradores[11].registrador[31:0]
++{$t4} Processor_testbench.Banco_de_Registradores[12].registrador[31:0]
++{$t5} Processor_testbench.Banco_de_Registradores[13].registrador[31:0]
++{$t6} Processor_testbench.Banco_de_Registradores[14].registrador[31:0]
++{$t7} Processor_testbench.Banco_de_Registradores[15].registrador[31:0]
++{$s0} Processor_testbench.Banco_de_Registradores[16].registrador[31:0]
++{$s1} Processor_testbench.Banco_de_Registradores[17].registrador[31:0]
++{$s2} Processor_testbench.Banco_de_Registradores[18].registrador[31:0]
++{$s3} Processor_testbench.Banco_de_Registradores[19].registrador[31:0]
++{$s4} Processor_testbench.Banco_de_Registradores[20].registrador[31:0]
++{$s5} Processor_testbench.Banco_de_Registradores[21].registrador[31:0]
++{$s6} Processor_testbench.Banco_de_Registradores[22].registrador[31:0]
++{$s7} Processor_testbench.Banco_de_Registradores[23].registrador[31:0]
++{$t8} Processor_testbench.Banco_de_Registradores[24].registrador[31:0]
++{$t9} Processor_testbench.Banco_de_Registradores[25].registrador[31:0]
++{$k0} Processor_testbench.Banco_de_Registradores[26].registrador[31:0]
++{$k1} Processor_testbench.Banco_de_Registradores[27].registrador[31:0]
++{$gp} Processor_testbench.Banco_de_Registradores[28].registrador[31:0]
++{$sp} Processor_testbench.Banco_de_Registradores[29].registrador[31:0]
++{$fp} Processor_testbench.Banco_de_Registradores[30].registrador[31:0]
++{$ra} Processor_testbench.Banco_de_Registradores[31].registrador[31:0]
+@1401200
+-BANCO DE REGISTRADORES
+@c00200
+-MEMÓRIA DE DADOS
+@200
+-MEMÓRIA DE DADOS [0-40]
+@24
+Processor_testbench.Memoria_de_Dados[0].data[31:0]
+Processor_testbench.Memoria_de_Dados[1].data[31:0]
+Processor_testbench.Memoria_de_Dados[2].data[31:0]
+Processor_testbench.Memoria_de_Dados[3].data[31:0]
+Processor_testbench.Memoria_de_Dados[4].data[31:0]
+Processor_testbench.Memoria_de_Dados[5].data[31:0]
+Processor_testbench.Memoria_de_Dados[6].data[31:0]
+Processor_testbench.Memoria_de_Dados[7].data[31:0]
+Processor_testbench.Memoria_de_Dados[8].data[31:0]
+Processor_testbench.Memoria_de_Dados[9].data[31:0]
+Processor_testbench.Memoria_de_Dados[10].data[31:0]
+Processor_testbench.Memoria_de_Dados[11].data[31:0]
+Processor_testbench.Memoria_de_Dados[12].data[31:0]
+Processor_testbench.Memoria_de_Dados[13].data[31:0]
+Processor_testbench.Memoria_de_Dados[14].data[31:0]
+Processor_testbench.Memoria_de_Dados[15].data[31:0]
+Processor_testbench.Memoria_de_Dados[16].data[31:0]
+Processor_testbench.Memoria_de_Dados[17].data[31:0]
+Processor_testbench.Memoria_de_Dados[18].data[31:0]
+Processor_testbench.Memoria_de_Dados[19].data[31:0]
+Processor_testbench.Memoria_de_Dados[20].data[31:0]
+Processor_testbench.Memoria_de_Dados[21].data[31:0]
+Processor_testbench.Memoria_de_Dados[22].data[31:0]
+Processor_testbench.Memoria_de_Dados[23].data[31:0]
+Processor_testbench.Memoria_de_Dados[24].data[31:0]
+Processor_testbench.Memoria_de_Dados[25].data[31:0]
+Processor_testbench.Memoria_de_Dados[26].data[31:0]
+Processor_testbench.Memoria_de_Dados[27].data[31:0]
+Processor_testbench.Memoria_de_Dados[28].data[31:0]
+Processor_testbench.Memoria_de_Dados[29].data[31:0]
+Processor_testbench.Memoria_de_Dados[30].data[31:0]
+Processor_testbench.Memoria_de_Dados[31].data[31:0]
+Processor_testbench.Memoria_de_Dados[32].data[31:0]
+Processor_testbench.Memoria_de_Dados[33].data[31:0]
+Processor_testbench.Memoria_de_Dados[34].data[31:0]
+Processor_testbench.Memoria_de_Dados[35].data[31:0]
+Processor_testbench.Memoria_de_Dados[36].data[31:0]
+Processor_testbench.Memoria_de_Dados[37].data[31:0]
+Processor_testbench.Memoria_de_Dados[38].data[31:0]
+Processor_testbench.Memoria_de_Dados[39].data[31:0]
+Processor_testbench.Memoria_de_Dados[40].data[31:0]
+@200
+-CONTINUA [40...255]
+@1401200
+-MEMÓRIA DE DADOS
+@c00200
+-ALU
+@200
+-ALU (DECIMAL)
+@24
+Processor_testbench.dut.ALU0.A[31:0]
+Processor_testbench.dut.ALU0.B[31:0]
+@22
+Processor_testbench.dut.ALU0.ALUOperation[3:0]
+@24
+Processor_testbench.dut.ALU0.ALUResult[31:0]
+@28
+Processor_testbench.dut.ALU0.Zero
+@1401200
+-ALU
+@c00200
+-MULTIPLEXADORES
+@200
+-MUX (HEXADECIMAL)
+@c00022
++{REG_MUX_OUT} Processor_testbench.dut.mux0.wReg[4:0]
+@28
+(0)Processor_testbench.dut.mux0.wReg[4:0]
+(1)Processor_testbench.dut.mux0.wReg[4:0]
+(2)Processor_testbench.dut.mux0.wReg[4:0]
+(3)Processor_testbench.dut.mux0.wReg[4:0]
+(4)Processor_testbench.dut.mux0.wReg[4:0]
+@1401200
+-group_end
+@c00022
++{ALU_MUX_OUT} Processor_testbench.dut.mux1.regData[31:0]
+@28
+(0)Processor_testbench.dut.mux1.regData[31:0]
+(1)Processor_testbench.dut.mux1.regData[31:0]
+(2)Processor_testbench.dut.mux1.regData[31:0]
+(3)Processor_testbench.dut.mux1.regData[31:0]
+(4)Processor_testbench.dut.mux1.regData[31:0]
+(5)Processor_testbench.dut.mux1.regData[31:0]
+(6)Processor_testbench.dut.mux1.regData[31:0]
+(7)Processor_testbench.dut.mux1.regData[31:0]
+(8)Processor_testbench.dut.mux1.regData[31:0]
+(9)Processor_testbench.dut.mux1.regData[31:0]
+(10)Processor_testbench.dut.mux1.regData[31:0]
+(11)Processor_testbench.dut.mux1.regData[31:0]
+(12)Processor_testbench.dut.mux1.regData[31:0]
+(13)Processor_testbench.dut.mux1.regData[31:0]
+(14)Processor_testbench.dut.mux1.regData[31:0]
+(15)Processor_testbench.dut.mux1.regData[31:0]
+(16)Processor_testbench.dut.mux1.regData[31:0]
+(17)Processor_testbench.dut.mux1.regData[31:0]
+(18)Processor_testbench.dut.mux1.regData[31:0]
+(19)Processor_testbench.dut.mux1.regData[31:0]
+(20)Processor_testbench.dut.mux1.regData[31:0]
+(21)Processor_testbench.dut.mux1.regData[31:0]
+(22)Processor_testbench.dut.mux1.regData[31:0]
+(23)Processor_testbench.dut.mux1.regData[31:0]
+(24)Processor_testbench.dut.mux1.regData[31:0]
+(25)Processor_testbench.dut.mux1.regData[31:0]
+(26)Processor_testbench.dut.mux1.regData[31:0]
+(27)Processor_testbench.dut.mux1.regData[31:0]
+(28)Processor_testbench.dut.mux1.regData[31:0]
+(29)Processor_testbench.dut.mux1.regData[31:0]
+(30)Processor_testbench.dut.mux1.regData[31:0]
+(31)Processor_testbench.dut.mux1.regData[31:0]
+@1401200
+-group_end
+@22
++{BRANCH_MUX_OUT} Processor_testbench.dut.mux2.PCAddress[31:0]
+@c00022
++{DATAMEMORY_MUX_OUT} Processor_testbench.dut.mux3.writeData[31:0]
+@28
+(0)Processor_testbench.dut.mux3.writeData[31:0]
+(1)Processor_testbench.dut.mux3.writeData[31:0]
+(2)Processor_testbench.dut.mux3.writeData[31:0]
+(3)Processor_testbench.dut.mux3.writeData[31:0]
+(4)Processor_testbench.dut.mux3.writeData[31:0]
+(5)Processor_testbench.dut.mux3.writeData[31:0]
+(6)Processor_testbench.dut.mux3.writeData[31:0]
+(7)Processor_testbench.dut.mux3.writeData[31:0]
+(8)Processor_testbench.dut.mux3.writeData[31:0]
+(9)Processor_testbench.dut.mux3.writeData[31:0]
+(10)Processor_testbench.dut.mux3.writeData[31:0]
+(11)Processor_testbench.dut.mux3.writeData[31:0]
+(12)Processor_testbench.dut.mux3.writeData[31:0]
+(13)Processor_testbench.dut.mux3.writeData[31:0]
+(14)Processor_testbench.dut.mux3.writeData[31:0]
+(15)Processor_testbench.dut.mux3.writeData[31:0]
+(16)Processor_testbench.dut.mux3.writeData[31:0]
+(17)Processor_testbench.dut.mux3.writeData[31:0]
+(18)Processor_testbench.dut.mux3.writeData[31:0]
+(19)Processor_testbench.dut.mux3.writeData[31:0]
+(20)Processor_testbench.dut.mux3.writeData[31:0]
+(21)Processor_testbench.dut.mux3.writeData[31:0]
+(22)Processor_testbench.dut.mux3.writeData[31:0]
+(23)Processor_testbench.dut.mux3.writeData[31:0]
+(24)Processor_testbench.dut.mux3.writeData[31:0]
+(25)Processor_testbench.dut.mux3.writeData[31:0]
+(26)Processor_testbench.dut.mux3.writeData[31:0]
+(27)Processor_testbench.dut.mux3.writeData[31:0]
+(28)Processor_testbench.dut.mux3.writeData[31:0]
+(29)Processor_testbench.dut.mux3.writeData[31:0]
+(30)Processor_testbench.dut.mux3.writeData[31:0]
+(31)Processor_testbench.dut.mux3.writeData[31:0]
+@1401200
+-group_end
+@c00022
++{JUMP_MUX_OUT} Processor_testbench.dut.mux4.PCAddress[31:0]
+@28
+(0)Processor_testbench.dut.mux4.PCAddress[31:0]
+(1)Processor_testbench.dut.mux4.PCAddress[31:0]
+(2)Processor_testbench.dut.mux4.PCAddress[31:0]
+(3)Processor_testbench.dut.mux4.PCAddress[31:0]
+(4)Processor_testbench.dut.mux4.PCAddress[31:0]
+(5)Processor_testbench.dut.mux4.PCAddress[31:0]
+(6)Processor_testbench.dut.mux4.PCAddress[31:0]
+(7)Processor_testbench.dut.mux4.PCAddress[31:0]
+(8)Processor_testbench.dut.mux4.PCAddress[31:0]
+(9)Processor_testbench.dut.mux4.PCAddress[31:0]
+(10)Processor_testbench.dut.mux4.PCAddress[31:0]
+(11)Processor_testbench.dut.mux4.PCAddress[31:0]
+(12)Processor_testbench.dut.mux4.PCAddress[31:0]
+(13)Processor_testbench.dut.mux4.PCAddress[31:0]
+(14)Processor_testbench.dut.mux4.PCAddress[31:0]
+(15)Processor_testbench.dut.mux4.PCAddress[31:0]
+(16)Processor_testbench.dut.mux4.PCAddress[31:0]
+(17)Processor_testbench.dut.mux4.PCAddress[31:0]
+(18)Processor_testbench.dut.mux4.PCAddress[31:0]
+(19)Processor_testbench.dut.mux4.PCAddress[31:0]
+(20)Processor_testbench.dut.mux4.PCAddress[31:0]
+(21)Processor_testbench.dut.mux4.PCAddress[31:0]
+(22)Processor_testbench.dut.mux4.PCAddress[31:0]
+(23)Processor_testbench.dut.mux4.PCAddress[31:0]
+(24)Processor_testbench.dut.mux4.PCAddress[31:0]
+(25)Processor_testbench.dut.mux4.PCAddress[31:0]
+(26)Processor_testbench.dut.mux4.PCAddress[31:0]
+(27)Processor_testbench.dut.mux4.PCAddress[31:0]
+(28)Processor_testbench.dut.mux4.PCAddress[31:0]
+(29)Processor_testbench.dut.mux4.PCAddress[31:0]
+(30)Processor_testbench.dut.mux4.PCAddress[31:0]
+(31)Processor_testbench.dut.mux4.PCAddress[31:0]
+@1401200
+-group_end
+-MULTIPLEXADORES
+[pattern_trace] 1
+[pattern_trace] 0
