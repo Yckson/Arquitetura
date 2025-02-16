@@ -1,6 +1,6 @@
 module ALU(
-    input wire [31:0] A,           // Operando 1
-    input wire [31:0] B,           // Operando 2
+    input wire signed [31:0] A,           // Operando 1
+    input wire signed [31:0] B,           // Operando 2
     input wire [3:0] ALUOperation, // Código da operação ALU
     output reg [31:0] ALUResult,   // Resultado da ALU
     output wire Zero               // Sinal Zero (ativo quando ALUResult é 0)
