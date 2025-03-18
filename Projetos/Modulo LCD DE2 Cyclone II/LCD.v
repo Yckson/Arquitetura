@@ -29,7 +29,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
 
     //Pin assignments
 
-    assign LCD_DATA = (select_ReadOrWrite == 1'b0) ? currCmd : 32'bz;
+    assign LCD_DATA = (select_ReadOrWrite == 1'b0) ? currCmd : 8'bz;
     assign LCD_RW = select_ReadOrWrite;
     assign LCD_RS = select_CommandOrData;
     assign LCD_ON = powerON;
@@ -79,7 +79,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
 
                     currState <= PULSE_HIGH;
                     nextState <= waitingState;
-                    hasTested <= 0'b0;
+                    hasTested <= 1'b0;
                     LCDAvailable <= 1'b0;
 
                 end
@@ -92,7 +92,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     currState <= PULSE_HIGH;
                     nextState <= (selectCD) ? byte0 : initStateCommand;
                     LCDAvailable <= 1'b0;
-                    hasTested <= 0'b0;
+                    hasTested <= 1'b0;
 
 
                 end
@@ -104,7 +104,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     
                     currState <= PULSE_HIGH;
                     nextState <= byte1;
-                    hasTested <= 0'b0;
+                    hasTested <= 1'b0;
 
                 end
 
@@ -116,7 +116,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     
                     currState <= PULSE_HIGH;
                     nextState <= byte2;
-                    hasTested <= 0'b0;
+                    hasTested <= 1'b0;
 
                 end
                 byte2: begin
@@ -127,7 +127,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     
                     currState <= PULSE_HIGH;
                     nextState <= byte3;
-                    hasTested <= 0'b0;
+                    hasTested <= 1'b0;
 
                 end
                 byte3: begin
@@ -138,7 +138,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     
                     currState <= PULSE_HIGH;
                     nextState <= waitingState;
-                    hasTested <= 0'b0;
+                    hasTested <= 1'b0;
 
                 end
 
@@ -161,7 +161,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     select_CommandOrData <= 1'b0;
                     currState <= (enableWriting) ? initState2 : waitingState;
                     LCDAvailable <= 1'b1;
-                    hasTested <= 0'b0;
+                    hasTested <= 1'b0;
                 end
 
                 resetState: begin
@@ -172,6 +172,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     backlightON <= 1'b1;
                     currCmd <= 8'h38;
                     LCDAvailable <= 1'b0;
+                    hasTested <= 1'b0;
 
                     currState <= PULSE_HIGH;
                     nextState <= initState1;

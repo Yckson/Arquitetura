@@ -1,4 +1,4 @@
-module LCD_test (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_50, KEY, LEDR);
+module LCD_test (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_27, KEY, LEDR);
 
     reg [31:0] data;
     reg selectCD;
@@ -13,18 +13,21 @@ module LCD_test (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_50, KEY, LEDR
     output wire [17:0] LEDR;
     wire LCDAvailable;
 
-    input wire CLOCK_50;
+    reg comecou;
+
+    input wire CLOCK_27;
     input wire [3:0] KEY;
     wire rst;
 
     assign rst = KEY[0];
-    assign LEDR [17:1] = 17'b0;
+    assign LEDR [17:2] = 16'b0;
     assign LEDR[0] = LCDAvailable;
+    assign LEDR[1] = rst;
 
     LCD lcd (
         .data(data),
         .selectCD(selectCD),
-        .clk(CLOCK_50),
+        .clk(CLOCK_27),
         .rst(rst),
         .LCD_DATA(LCD_DATA),
         .LCD_RW(LCD_RW),
@@ -36,15 +39,20 @@ module LCD_test (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_50, KEY, LEDR
     );
 
 
-    always @(posedge CLOCK_50 or posedge rst) begin
+    always @(posedge CLOCK_27 or posedge rst) begin
         if (rst) begin
             selectCD <= 1'b1;
             enableWriting <= 1'b0;
             data <= " UIU";
+            comecou <= 1'b0;
         end
         else begin
             
-            enableWriting <= 1'b1;
+            if (LCDAvailable) begin
+                if (!comecou) enableWriting <= 1'b1;
+                else enableWriting <= 1'b0;
+            end
+
 
         end
     end
