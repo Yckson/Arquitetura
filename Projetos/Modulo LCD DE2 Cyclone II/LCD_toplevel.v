@@ -40,7 +40,7 @@ module LCD_test (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_50, KEY, LEDR
         if (rst) begin
             selectCD <= 1'b1;
             enableWriting <= 1'b0;
-            data <= "UIU";
+            data <= " UIU";
         end
         else begin
             
