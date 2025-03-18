@@ -27,8 +27,6 @@ module LCD_test;
         .LCD_Available(LCDAvailable)
     );
 
-    
-
     initial begin
 
         $dumpfile("LCD_test.vcd");
