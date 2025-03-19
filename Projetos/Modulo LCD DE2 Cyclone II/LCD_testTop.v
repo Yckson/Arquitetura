@@ -1,6 +1,6 @@
-`timescale 1us/1ns
+//`timescale 1us/1ns
 
-module LCD_testbench2;
+module LCD_testbench2 (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, LCD_EN, CLOCK_50, SW, LEDR);
 
   // Sinais de estímulo para o módulo LCD
   reg  [31:0] data;
@@ -10,21 +10,30 @@ module LCD_testbench2;
   reg         rst;
 
   // Sinais do fake driver para simular o comportamento interno do LCD
-  reg  [7:0]  fake_LCD_data;
-  reg         fake_driver_enable;
-  integer     busy_counter;
+  // reg  [7:0]  fake_LCD_data;
+  // reg         fake_driver_enable;
+  // integer     busy_counter;
 
   // Declaramos LCD_DATA como tri0 para que, quando não for dirigido pelo módulo,
   // ele assuma o valor default 0 (busy flag baixo)
-  tri0 [7:0] LCD_DATA;
+  inout wire [7:0] LCD_DATA;
+  input [17:0] SW;
 
-  wire LCD_RW;
-  wire LCD_RS;
-  wire LCD_ON;
-  wire LCD_BLON;
+  output wire LCD_RW;
+  output wire LCD_RS;
+  output wire LCD_ON;
+  output wire LCD_BLON;
+  output wire [17:0] LEDR;
   wire LCD_Available;
   // (Opcional) Se seu módulo LCD tiver um sinal de enable de LCD, pode ser conectado
-  wire LCD_EN;
+  output wire LCD_EN;
+
+  assign clk = CLOCK_50;
+  assign rst = SW[17];
+  assign LEDR[17] = SW[17];
+  assign LEDR[16:0] = 17'b0;
+
+
 
   // Instanciação do módulo LCD (Unidade Sob Teste)
   LCD uut (
@@ -48,37 +57,39 @@ module LCD_testbench2;
   // (ou seja, LCD_RW == 1), o fake driver injeta um valor com busy flag alto
   // durante 3 ciclos e depois libera (busy flag 0).
   // ---------------------------------------------------------------
-  initial begin
-    fake_LCD_data = 8'h80;  // busy flag alto (bit7 = 1)
-    fake_driver_enable = 0;
-    busy_counter = 0;
-  end
 
-  always @(posedge clk) begin
-    if (LCD_RW == 1'b1) begin
-      // Ativa o driver fake quando o módulo está em modo leitura
-      fake_driver_enable <= 1'b1;
-      if (busy_counter < 3)
-        busy_counter <= busy_counter + 1;
-      else
-        fake_LCD_data <= 8'h00;  // Após 3 ciclos, busy flag desativa
-    end else begin
-      fake_driver_enable <= 1'b0;
-      busy_counter <= 0;
-      fake_LCD_data <= 8'h80; // Prepara para nova simulação de busy
-    end
-  end
+  //from testbench
+
+  //initial begin
+  //  fake_LCD_data = 8'h80;  // busy flag alto (bit7 = 1)
+  //  fake_driver_enable = 0;
+  //  busy_counter = 0;
+  //end
+
+  // always @(posedge clk) begin
+  //   if (LCD_RW == 1'b1) begin
+  //     // Ativa o driver fake quando o módulo está em modo leitura
+  //     fake_driver_enable <= 1'b1;
+  //     if (busy_counter < 3)
+  //       busy_counter <= busy_counter + 1;
+  //     else
+  //       fake_LCD_data <= 8'h00;  // Após 3 ciclos, busy flag desativa
+  //   end else begin
+  //     fake_driver_enable <= 1'b0;
+  //     busy_counter <= 0;
+  //     fake_LCD_data <= 8'h80; // Prepara para nova simulação de busy
+  //   end
+  // end
 
   // Se o módulo não estiver dirigindo o barramento, o fake driver assume.
-  assign LCD_DATA = fake_driver_enable ? fake_LCD_data : 8'bz;
 
   // ---------------------------------------------------------------
   // Gerador de clock: período de 10 us
   // ---------------------------------------------------------------
-  initial begin
-    clk = 0;
-    forever #5 clk = ~clk;  // #5 equivale a 5 us, totalizando 10 us de período
-  end
+  // initial begin
+  //   clk = 0;
+  //   forever #5 clk = ~clk;  // #5 equivale a 5 us, totalizando 10 us de período
+  // end
 
   // ---------------------------------------------------------------
   // Máquina de Estados do Testbench para sequenciar os estímulos
@@ -176,10 +187,10 @@ module LCD_testbench2;
 
         FINISH: begin
           // Aguarda alguns ciclos antes de terminar a simulação
-          if (delay_counter < 10)
-            delay_counter <= delay_counter + 1;
-          else
-            $finish;
+          // if (delay_counter < 10)
+          //   delay_counter <= delay_counter + 1;
+          // else
+            //$finish;
         end
 
         default: test_state <= INIT;
@@ -190,12 +201,12 @@ module LCD_testbench2;
   // ---------------------------------------------------------------
   // Inicialização do reset (apenas para o testbench)
   // ---------------------------------------------------------------
-  initial begin
-    $dumpfile("LCD_testbench2.vcd");
-    $dumpvars(0, LCD_testbench2);
-    rst = 1;
-    #20;
-    rst = 0;
-  end
+  // initial begin
+  //   $dumpfile("LCD_testbench2.vcd");
+  //   $dumpvars(0, LCD_testbench2);
+  //   rst = 1;
+  //   #20;
+  //   rst = 0;
+  // end
 
 endmodule
