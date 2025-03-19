@@ -1,4 +1,4 @@
-module LCD_test (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_27, KEY, LEDR);
+module LCD_topLevel_old (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_27, KEY, LEDR, LCD_EN);
 
     reg [31:0] data;
     reg selectCD;
@@ -17,6 +17,7 @@ module LCD_test (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, CLOCK_27, KEY, LEDR
 
     input wire CLOCK_27;
     input wire [3:0] KEY;
+    output wire LED_EN;
     wire rst;
 
     assign rst = KEY[0];

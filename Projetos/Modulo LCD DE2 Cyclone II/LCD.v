@@ -1,4 +1,4 @@
-module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, enableWriting, LCD_Available);
+module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, LCD_EN, enableWriting, LCD_Available);
 
     input wire [31:0] data;
     input wire selectCD;
@@ -13,6 +13,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
     output wire LCD_ON;
     output wire LCD_BLON;
     output wire LCD_Available;
+    output wire LCD_EN;
 
     wire LCD_BUSYFLAG;
 
@@ -36,12 +37,13 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
     assign LCD_BLON = backlightON;
     assign LCD_Available = LCDAvailable;
     assign LCD_BUSYFLAG = LCD_DATA[7];
+    assign LCD_EN = enableNext;
 
 
     //For the FSA ---------------------------------------------------------------------
 
     reg [3:0] currState;
-    reg [7:0] delayClocks;
+    reg [5:0] delayClocks;
     reg [7:0] currCmd;
     reg [3:0] nextState;
 
@@ -68,6 +70,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
             LCDAvailable <= 1'b0;
             enableNext <= 1'b0;
             hasTested <= 1'b0;
+            delayClocks <= 0;
         end
 
         else begin
@@ -76,10 +79,8 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     currCmd <= 8'h0C;
                     select_CommandOrData <= 1'b0;
                     localData <= 32'b0;
-
                     currState <= PULSE_HIGH;
                     nextState <= waitingState;
-                    hasTested <= 1'b0;
                     LCDAvailable <= 1'b0;
 
                 end
@@ -92,7 +93,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     currState <= PULSE_HIGH;
                     nextState <= (selectCD) ? byte0 : initStateCommand;
                     LCDAvailable <= 1'b0;
-                    hasTested <= 1'b0;
+                    
 
 
                 end
@@ -104,7 +105,7 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     
                     currState <= PULSE_HIGH;
                     nextState <= byte1;
-                    hasTested <= 1'b0;
+                    
 
                 end
 
@@ -116,18 +117,16 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     
                     currState <= PULSE_HIGH;
                     nextState <= byte2;
-                    hasTested <= 1'b0;
 
                 end
                 byte2: begin
-                    select_ReadOrWrite <= 1'b0;
+                    
                     enableNext <= 1'b0;
                     select_CommandOrData <= 1'b1;
                     currCmd <= localData[15:8];
                     
                     currState <= PULSE_HIGH;
                     nextState <= byte3;
-                    hasTested <= 1'b0;
 
                 end
                 byte3: begin
@@ -138,30 +137,37 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                     
                     currState <= PULSE_HIGH;
                     nextState <= waitingState;
-                    hasTested <= 1'b0;
+                    
 
                 end
 
                 waitNotBusy: begin
-                    select_CommandOrData <= 1'b0;
-                    select_ReadOrWrite <= 1'b1;
 
                     if (hasTested) begin
-                        currState <= (!LCD_BUSYFLAG) ? nextState : waitNotBusy;
+                        hasTested <= 1'b0;
+                        if (!LCD_BUSYFLAG) begin
+                            currState <= nextState;
+                            select_ReadOrWrite <= 1'b0;
+                        end
+                        else begin
+                            currState <= waitNotBusy;
+                        end
                     end
                     else begin
                         hasTested <= 1'b1;
                         currState <= PULSE_HIGH;
+                        select_CommandOrData <= 1'b0;
+                        select_ReadOrWrite <= 1'b1;
                     end
 
                 end
 
                 waitingState: begin
                     currCmd <= 8'h00;
+                    LCDAvailable <= 1'b1;
                     select_CommandOrData <= 1'b0;
                     currState <= (enableWriting) ? initState2 : waitingState;
                     LCDAvailable <= 1'b1;
-                    hasTested <= 1'b0;
                 end
 
                 resetState: begin
@@ -182,14 +188,28 @@ module LCD (data, selectCD, clk, rst, LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON
                 PULSE_HIGH: begin
                     
                     enableNext <= 1'b1;
-                    currState <= PULSE_LOW;
+                    if (delayClocks < 20) begin
+                        delayClocks <= delayClocks + 1;
+                        currState <= PULSE_HIGH;
+                    end
+                    else begin
+                        delayClocks <= 0;
+                        currState <= PULSE_LOW;
+                    end
 
                 end
 
                 PULSE_LOW: begin
                     
-                    enableNext <= 0'b0;
-                    currState <= waitNotBusy;
+                    enableNext <= 1'b0;
+                    if (delayClocks < 22) begin
+                        delayClocks <= delayClocks + 1;
+                        currState <= PULSE_LOW;
+                    end
+                    else begin
+                        delayClocks <= 0;
+                        currState <= waitNotBusy;
+                    end
 
                 end
 
