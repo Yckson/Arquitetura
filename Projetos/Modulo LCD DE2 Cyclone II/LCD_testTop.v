@@ -1,6 +1,6 @@
 //`timescale 1us/1ns
 
-module LCD_testbench2 (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, LCD_EN, CLOCK_50, SW, LEDR);
+module LCD_testTop (LCD_DATA, LCD_RW, LCD_RS, LCD_ON, LCD_BLON, LCD_EN, CLOCK_50, SW, LEDR);
 
   // Sinais de estímulo para o módulo LCD
   reg  [31:0] data;
