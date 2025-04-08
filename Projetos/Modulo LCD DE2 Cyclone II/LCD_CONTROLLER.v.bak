@@ -1,0 +1,135 @@
+
+module LCD_CONTROLLER (
+    input wire E,
+    input wire [7:0] DATA,
+    input wire clk,
+    input wire rst,
+
+    
+    output [7:0] LCD_DATA,
+
+    output wire busy,
+    output wire LCD_RW,
+    output wire LCD_EN,
+    output wire LCD_RS,
+    output wire LCD_ON
+);
+
+// STATE machine STATEs   
+
+parameter INIT =                8'd0;
+parameter INIT2 =               8'd1;
+parameter INIT3 =               8'd2;
+parameter WAITING_STATE =       8'd3;
+parameter WRITE_BYTE_STATE =    8'd4;
+
+
+//--------------------------------
+
+
+reg [7:0] safeDATA;
+
+reg regBusy;
+reg regLCD_EN;
+reg regLCD_ON;
+
+reg regRS;
+reg regRW;
+
+
+reg [7:0] regData;
+reg [7:0] STATE;
+reg [7:0] NEXT_STATE;
+
+reg E_sync;
+
+assign busy = regBusy;
+assign LCD_EN = regLCD_EN;
+assign LCD_ON = regLCD_ON;
+
+assign LCD_RW = regRW;
+assign LCD_RS = regRS;
+assign LCD_DATA = regData;
+
+
+
+always @(posedge clk or posedge rst) begin
+    if (rst) E_sync <= 1'b0;
+    else E_sync <= E;
+end
+
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        regData <= 8'b0;
+        safeDATA <= 8'b0;
+        regBusy <= 1'b0;
+        regLCD_EN <= 1'b0;
+        regLCD_ON <= 1'b0;
+        regRS <= 1'b0;
+        regRW <= 1'b0;
+        STATE <= INIT;
+
+    end else begin
+        case (STATE)
+            INIT: begin
+                regBusy <= 1'b1;
+                regRS <= 1'b0;
+                regRW <= 1'b0;
+                regData <= 8'b8;
+                safeDATA <= 8'b0;
+
+                STATE <= INIT2;
+            end
+
+            INIT2: begin
+                regRS <= 1'b0;
+                regRW <= 1'b0;
+                regData <= 8'b1;
+
+                STATE <= INIT3;
+            end
+
+            INIT3: begin
+                regRS <= 1'b0;
+                regRW <= 1'b0;
+                regData <= 8'b00100000;
+
+                STATE <= WAITING_STATE;
+            end
+
+            WAITING_STATE: begin
+                regBusy <= 1'b0;
+                regRS <= 1'b1;
+                regRW <= 1'b1;
+
+                regData <= 8'b0;
+                safeDATA <= DATA;
+
+                STATE <= (E_sync) ? WRITE_BYTE_STATE : WAITING_STATE;
+            end
+
+            WRITE_BYTE_STATE: begin
+                regBusyusy <= 1'b1;
+                regRS <= 1'b0;
+                regData <= safeDATA;
+
+                STATE <= WAITING_STATE;
+
+            end
+
+            default: begin
+                STATE <= INIT;
+            end
+        
+        endcase
+    end
+end
+
+
+
+
+
+
+    
+endmodule

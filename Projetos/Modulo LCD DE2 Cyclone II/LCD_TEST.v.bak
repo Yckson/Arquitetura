@@ -1,0 +1,139 @@
+module LCD_TEST (
+    input wire [3:0] KEY,
+    output wire [7:0] LCD_DATA,
+    output wire LCD_RW,
+    output wire LCD_EN,
+    output wire LCD_RS,
+    output wire LCD_ON
+);
+
+    reg [7:0] data;
+    reg enable;
+    wire busy;
+    wire clk;
+    wire rst;
+
+    assign clk = KEY[2]; // Clock input from KEY[2]
+    assign rst = KEY[0]; // Reset input from KEY[0]
+
+    LCD_CONTROLLER lcd_controller (
+        .E(enable),
+        .DATA(data),
+        .clk(clk),
+        .rst(rst),
+        .LCD_DATA(LCD_DATA),
+        .busy(busy),
+        .LCD_RW(LCD_RW),
+        .LCD_EN(LCD_EN),
+        .LCD_RS(LCD_RS),
+        .LCD_ON(LCD_ON)
+    );
+
+    // Máquina de estados para escrever "HELLO WILL"
+    parameter IDLE = 4'd0;
+    parameter WRITE_H = 4'd1;
+    parameter WRITE_E = 4'd2;
+    parameter WRITE_L1 = 4'd3;
+    parameter WRITE_L2 = 4'd4;
+    parameter WRITE_O = 4'd5;
+    parameter WRITE_SPACE = 4'd6;
+    parameter WRITE_W = 4'd7;
+    parameter WRITE_I = 4'd8;
+    parameter WRITE_L3 = 4'd9;
+    parameter WRITE_L4 = 4'd10;
+    parameter DONE = 4'd11;
+
+    reg [3:0] state;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            state <= IDLE;
+            data <= 8'b0;
+            enable <= 1'b0;
+        end else begin
+            case (state)
+                IDLE: begin
+                    if (!busy) begin
+                        state <= WRITE_H;
+                        data <= 8'h48; // 'H'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_H: begin
+                    if (!busy) begin
+                        state <= WRITE_E;
+                        data <= 8'h45; // 'E'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_E: begin
+                    if (!busy) begin
+                        state <= WRITE_L1;
+                        data <= 8'h4C; // 'L'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_L1: begin
+                    if (!busy) begin
+                        state <= WRITE_L2;
+                        data <= 8'h4C; // 'L'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_L2: begin
+                    if (!busy) begin
+                        state <= WRITE_O;
+                        data <= 8'h4F; // 'O'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_O: begin
+                    if (!busy) begin
+                        state <= WRITE_SPACE;
+                        data <= 8'h20; // ' '
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_SPACE: begin
+                    if (!busy) begin
+                        state <= WRITE_W;
+                        data <= 8'h57; // 'W'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_W: begin
+                    if (!busy) begin
+                        state <= WRITE_I;
+                        data <= 8'h49; // 'I'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_I: begin
+                    if (!busy) begin
+                        state <= WRITE_L3;
+                        data <= 8'h4C; // 'L'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_L3: begin
+                    if (!busy) begin
+                        state <= WRITE_L4;
+                        data <= 8'h4C; // 'L'
+                        enable <= 1'b1;
+                    end
+                end
+                WRITE_L4: begin
+                    if (!busy) begin
+                        state <= DONE;
+                        enable <= 1'b0;
+                    end
+                end
+                DONE: begin
+                    enable <= 1'b0; // Finaliza a escrita
+                end
+                default: state <= IDLE;
+            endcase
+        end
+    end
+
+endmodule
