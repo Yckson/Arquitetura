@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Apr 11 11:46:20 2025
+Quartus II 32-bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : CALEBE_PC-V1
+Top-level Entity Name : CALEBE_PC_V1
+Family : Cyclone II
+Total logic elements : 1,062
+    Total combinational functions : 822
+    Dedicated logic registers : 409
+Total registers : 409
+Total pins : 87
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'Processor:CALEBEPC|clock'
+Slack : -9.903
+TNS   : -2375.696
+
+Type  : Slow Model Setup 'CLOCK_27'
+Slack : -4.103
+TNS   : -392.015
+
+Type  : Slow Model Setup 'Processor:CALEBEPC|PC[2]'
+Slack : 0.058
+TNS   : 0.000
+
+Type  : Slow Model Hold 'Processor:CALEBEPC|PC[2]'
+Slack : -5.149
+TNS   : -14.700
+
+Type  : Slow Model Hold 'CLOCK_27'
+Slack : -2.502
+TNS   : -2.502
+
+Type  : Slow Model Hold 'Processor:CALEBEPC|clock'
+Slack : -1.408
+TNS   : -6.914
+
+Type  : Slow Model Minimum Pulse Width 'CLOCK_27'
+Slack : -1.380
+TNS   : -128.380
+
+Type  : Slow Model Minimum Pulse Width 'Processor:CALEBEPC|PC[2]'
+Slack : -0.764
+TNS   : -17.016
+
+Type  : Slow Model Minimum Pulse Width 'Processor:CALEBEPC|clock'
+Slack : -0.500
+TNS   : -282.000
+
+Type  : Fast Model Setup 'Processor:CALEBEPC|clock'
+Slack : -3.845
+TNS   : -875.845
+
+Type  : Fast Model Setup 'CLOCK_27'
+Slack : -1.408
+TNS   : -112.516
+
+Type  : Fast Model Setup 'Processor:CALEBEPC|PC[2]'
+Slack : 0.434
+TNS   : 0.000
+
+Type  : Fast Model Hold 'Processor:CALEBEPC|PC[2]'
+Slack : -2.555
+TNS   : -7.391
+
+Type  : Fast Model Hold 'CLOCK_27'
+Slack : -1.547
+TNS   : -1.547
+
+Type  : Fast Model Hold 'Processor:CALEBEPC|clock'
+Slack : -1.067
+TNS   : -25.568
+
+Type  : Fast Model Minimum Pulse Width 'CLOCK_27'
+Slack : -1.380
+TNS   : -128.380
+
+Type  : Fast Model Minimum Pulse Width 'Processor:CALEBEPC|clock'
+Slack : -0.500
+TNS   : -282.000
+
+Type  : Fast Model Minimum Pulse Width 'Processor:CALEBEPC|PC[2]'
+Slack : -0.028
+TNS   : -0.504
+
+------------------------------------------------------------

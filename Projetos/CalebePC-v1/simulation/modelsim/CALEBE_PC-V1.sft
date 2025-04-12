@@ -1,0 +1,5 @@
+set tool_name "ModelSim-Altera (Verilog)"
+set corner_file_list {
+	{{"Slow Model"} {CALEBE_PC-V1.vo CALEBE_PC-V1_v.sdo}}
+	{{"Fast Model"} {CALEBE_PC-V1_fast.vo CALEBE_PC-V1_v_fast.sdo}}
+}
